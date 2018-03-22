@@ -16,8 +16,9 @@ import (
 	"github.com/auth0/go-jwt-middleware"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
-
+	"github.com/go-redis/redis"
 	"io"
+	"time"
 )
 
 const (
@@ -28,6 +29,8 @@ const (
 	BT_INSTANCE = "around-post"
 	ES_URL = "http://104.196.23.31:9200"
 	BUCKET_NAME = "post-images-197401"
+	ENABLE_MEMCACHE = true
+	REDIS_URL       = "redis-13492.c11.us-east-1-3.ec2.cloud.redislabs.com:13492"
 )
 
 var mySigningKey = []byte("secret")
@@ -111,6 +114,25 @@ func handlerSearch(w http.ResponseWriter, r *http.Request) {
 		ran = val + "km"
 	}
 
+	key := r.URL.Query().Get("lat") + ":" + r.URL.Query().Get("lon") + ":" + ran
+	if ENABLE_MEMCACHE {
+		rs_client := redis.NewClient(&redis.Options{
+			Addr:     REDIS_URL,
+			Password: "", // no password set
+			DB:       0,  // use default DB
+		})
+
+		val, err := rs_client.Get(key).Result()
+		if err != nil {
+			fmt.Printf("Redis cannot find the key %s as %v.\n", key, err)
+		} else {
+			fmt.Printf("Redis find the key %s.\n", key)
+			w.Header().Set("Content-Type", "application/json")
+			w.Write([]byte(val))
+			return
+		}
+	}
+
 	//fmt.Printf("Search received: %f %f %s\n", lat, lon, ran)
 
 	// Create a client
@@ -159,6 +181,20 @@ func handlerSearch(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 		return
+	}
+
+	if ENABLE_MEMCACHE {
+		rs_client := redis.NewClient(&redis.Options{
+			Addr:     REDIS_URL,
+			Password: "", // no password set
+			DB:       0,  // use default DB
+		})
+
+		// Set the cache expiration to be 30 seconds
+		err := rs_client.Set(key, string(js), time.Second*30).Err()
+		if err != nil {
+			fmt.Printf("Redis cannot save the key %s as %v.\n", key, err)
+		}
 	}
 
 	w.Header().Set("Content-Type", "application/json")
