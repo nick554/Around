@@ -6,8 +6,10 @@ export class Header extends React.Component {
         return (
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <h1 className="App-title">Around</h1>
-                <h2 className="App-title-p">Powered by React</h2>
+                <div className="App-title">
+                    <p className = "project-name">Around</p>
+                    <p className = "project-tool">Powered by React</p>
+                </div>
             </header>
         );
     }

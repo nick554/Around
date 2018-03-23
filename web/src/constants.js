@@ -1,0 +1,1 @@
+export const ServeRoot = 'https://around-75015.appspot.com';

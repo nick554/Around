@@ -7,10 +7,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header/>
-        <p className="App-intro">
-        <Main/>
-        </p>
+        <Header />
+        <Main />
       </div>
     );
   }

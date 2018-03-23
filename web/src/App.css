@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+  min-width:300px;
 }
 
 /* header */
@@ -11,15 +12,27 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear; height: 60px; float: left;
 }
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 .App-title { float: left;}
 .project-name { font-size: 2em;margin-bottom: 0.05em; color: #61DAFB;text-align: left;}
 .project-tool { font-size: 1em;color: white;margin-left: 1em;margin-top: -1em;}
+
+/* main */
+.main {
+  /*display: flex;*/
+  justify-content:center;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 10%;
+}
+
+
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+
