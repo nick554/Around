@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import { ServeRoot } from './constants';
+import { ServeRoot } from '../constants';
 import { Form, Input, Checkbox, Button, message } from 'antd';
 const FormItem = Form.Item;
 
