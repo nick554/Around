@@ -1,8 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import { ServeRoot } from '../constants';
+import { FormItem, ServerRoot } from '../constants';
 import { Form, Input, Checkbox, Button, message } from 'antd';
-const FormItem = Form.Item;
 
 class RegistrationForm extends React.Component {
     state = {
@@ -15,7 +14,7 @@ class RegistrationForm extends React.Component {
             if (!err) {
                 console.log('Received values of form: ', values);
                 $.ajax({
-                    url: `${ServeRoot}/signup`,
+                    url: `${ServerRoot}/signup`,
                     method: 'POST',
                     data: JSON.stringify({
                         username: values.username,
