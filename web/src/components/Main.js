@@ -7,16 +7,16 @@ import {Register} from './Register'
 
 export class Main extends React.Component {
     getRedirect = () => {
-        return this.isLoggedIn ? <Redirect to="/home"/> : <Redirect to="/login"/>;
+        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Redirect to="/login"/>;
     };
     getHome = () => {
-        return this.isLoggedIn ? <Home /> : <Redirect to="/login"/>;
+        return this.props.isLoggedIn ? <Home /> : <Redirect to="/login"/>;
     };
     getLogin = () => {
-        return this.isLoggedIn ? <Redirect to="/home"/> : <Login />;
+        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Login handleSuccessLogin={this.props.handleSuccessLogin}/>;
     };
     getRegister = () => {
-        return this.isLoggedIn ? <Redirect to="/home"/> : <Register />;
+        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Register />;
     };
     render() {
         return (

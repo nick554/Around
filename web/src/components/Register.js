@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import { FormItem, ServerRoot } from '../constants';
-import { Form, Input, Checkbox, Button, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
+import { Link } from 'react-router-dom';
+
 
 class RegistrationForm extends React.Component {
     state = {
@@ -116,15 +118,8 @@ class RegistrationForm extends React.Component {
                     )}
                 </FormItem>
                 <FormItem {...tailFormItemLayout}>
-                    {getFieldDecorator('agreement', {
-                        valuePropName: 'checked',
-                    })(
-                        <Checkbox>I have read the <a href="">agreement</a></Checkbox>
-                    )}
-                </FormItem>
-                <FormItem {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">Register</Button>
-                </FormItem>
+                    <p className ="notes">I already have an account,<br/>go back to <Link to="/login">login</Link></p>                </FormItem>
             </Form>
         );
     }

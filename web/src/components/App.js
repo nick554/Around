@@ -12,18 +12,18 @@ class App extends React.Component {
     }
     handleSuccessLogin = (response) => {
         localStorage.setItem(Token_KEY, response);
-        this.setState({ isLoggedIn:true })
+        this.setState({ isLoggedIn:true, });
     }
     handleLogout = () => {
         localStorage.removeItem(Token_KEY);
-        this.setState({ isLoggedIn: false });
+        this.setState({ isLoggedIn:false, });
     }
 q
   render() {
     return (
       <div className="App">
         <Header isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
-        <Main isLoggedIn={this.state.isLoggedIn} handleLogout={this.handleLogout}/>
+        <Main isLoggedIn={this.state.isLoggedIn} handleSuccessLogin={this.handleSuccessLogin}/>
       </div>
     );
   }
