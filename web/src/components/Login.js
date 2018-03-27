@@ -18,7 +18,7 @@ class NormalLoginForm extends React.Component {
                         password: values.password,
                     }),
                 }).then((response) => {
-                    message.success(response);
+                    this.props.handleSuccessLogin(response);
                 }, (error) => {
                     message.error(error.responseText);
                 }).catch((error) => {
@@ -49,7 +49,7 @@ class NormalLoginForm extends React.Component {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <Link to="/register">register now!</Link>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Or&nbsp;&nbsp; <Link to="/register">register now!</Link>
                 </FormItem>
             </Form>
         );
