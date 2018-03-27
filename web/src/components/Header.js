@@ -16,13 +16,14 @@ export class Header extends React.Component {
                 <div className="App-title">
                     <p className = "project-name">Around</p>
                     <p className = "project-tool">Powered by React</p>
-                    {
-                        this.props.isLoggedIn ?
-                            <a className="logout" onClick={this.props.handleLogout}>
-                                <Icon type="logout"/>&nbsp;&nbsp; logout
-                            </a> : null
-                    }
                 </div>
+                {
+                    this.props.isLoggedIn ?
+                        <a className="logout" onClick={this.props.handleLogout}>
+                            <Icon type="logout"/>&nbsp;&nbsp; logout
+                        </a> :
+                        null
+                }
             </header>
         );
     }

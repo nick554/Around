@@ -13,10 +13,11 @@ export class Main extends React.Component {
         return this.props.isLoggedIn ? <Home /> : <Redirect to="/login"/>;
     };
     getLogin = () => {
-        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Login handleSuccessLogin={this.props.handleSuccessLogin}/>;
+        return this.props.isLoggedIn ? <Redirect to="/home"/>
+            : <Login className = 'login-form' handleSuccessLogin={this.props.handleSuccessLogin}/>;
     };
     getRegister = () => {
-        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Register />;
+        return this.props.isLoggedIn ? <Redirect to="/home"/> : <Register className = 'register-form'/>;
     };
     render() {
         return (
