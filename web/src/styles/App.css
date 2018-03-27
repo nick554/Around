@@ -29,11 +29,9 @@
 
 
 /* main */
-.main { justify-content:center; min-width: 400px;}
-.login-form { margin-left: 40%; margin-right: 40%; margin-top: 5%;}
-.register-form { margin-left: 30%; margin-right: 40%; margin-top: 5%;}
-
-
-
-
+.main { justify-content:center; min-width: 400px; margin: 7% 40% 0 30% }
+.login-form { margin-left: 40%; }
+.login-button { width: 30%; }
+.register-bottom { width: 40%; margin-right: 10%; }
+.register-note { margin: 20px 10%; line-height: 1.5em;}
 
