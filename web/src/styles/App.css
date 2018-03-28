@@ -24,14 +24,19 @@
 .project-tool { font-size: 1em;color: white;margin-left: 1em;margin-top: -1em;}
 
 .logout {
-  padding: 25px 20px; color: #46c3fb; float: right;
+  padding: 25px 20px; color: #46C3FB; float: right;
 }
 
 
 /* main */
-.main { justify-content:center; min-width: 400px; margin: 7% 40% 0 30% }
+.main {
+  justify-content:center; min-width: 400px; margin: 7% 40% 0 30%;
+}
 .login-form { margin-left: 40%; }
 .login-button { width: 30%; }
 .register-bottom { width: 40%; margin-right: 10%; }
 .register-note { margin: 20px 10%; line-height: 1.5em;}
+.home-tags{
+  margin: 0 -40% 0 -30%;
+}
 
