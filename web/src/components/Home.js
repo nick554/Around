@@ -1,15 +1,14 @@
 import React from 'react'
 import { Tabs, Button } from 'antd';
-
-const TabPane = Tabs.TabPane;
+import {TabPane} from '../constants'
 
 
 export class Home extends React.Component {
     render() {
-        const operations = <Button type = 'primary'>Create New Post</Button>;
+
 
         return (
-            <Tabs tabBarExtraContent={operations} className="home-tags">
+            <Tabs tabBarExtraContent={ <Button type = 'primary'>Create New Post</Button> } className="home-tags">
                 <TabPane tab="Posts" key="1">Content of tab 1</TabPane>
                 <TabPane tab="Map View" key="2">Content of tab 2</TabPane>
             </Tabs>
