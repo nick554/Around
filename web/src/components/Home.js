@@ -20,7 +20,7 @@ export class Home extends React.Component {
             );
         } else {
             // Barely happen now. Haven't been tested.
-            this.setState({error:'Your browser does not support geolocation!'});
+            this.setState({ error:'Your browser does not support geolocation!' });
         }
     }
 
@@ -28,7 +28,7 @@ export class Home extends React.Component {
         console.log(position);
     }
     onFailureGetGeolocation = () => {
-        console.log('false')
+        this.setState({ error: 'Failed to load geo location!' });
     }
 
     getPostContent = () => {
