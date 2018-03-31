@@ -27,7 +27,6 @@ class RegistrationForm extends React.Component {
                     (response)=>{
                         message.success(response);
                         this.setState( { gotSuccessRegister: true });
-                        setInterval()
                     },
                     (response)=>{message.error(response.responseText);}
                 ).catch(
