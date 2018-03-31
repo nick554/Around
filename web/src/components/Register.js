@@ -2,13 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import { FormItem, ServerRoot } from '../constants';
 import { Form, Input, Button, message } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class RegistrationForm extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
+        gotSuccessRegister: false,
     };
     handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +24,11 @@ class RegistrationForm extends React.Component {
                         password: values.password,
                     })
                 }).then(
-                    (response)=>{message.success(response);},
+                    (response)=>{
+                        message.success(response);
+                        this.setState( { gotSuccessRegister: true });
+                        setInterval()
+                    },
                     (response)=>{message.error(response.responseText);}
                 ).catch(
                     (error)=>{console.log(error);}
@@ -52,6 +57,9 @@ class RegistrationForm extends React.Component {
     }
 
     render() {
+        if ( this.state.gotSuccessRegister ) {
+            return <Redirect to = "/login"/>;
+        }
         const { getFieldDecorator } = this.props.form;
 
         const formItemLayout = {
