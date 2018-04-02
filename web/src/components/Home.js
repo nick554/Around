@@ -25,7 +25,8 @@ export class Home extends React.Component {
     }
 
     onSuccessGetGeolocation = (position) => {
-        console.log(position);
+        const {latitude, longitude } = position.coords;
+        console.log(latitude+' '+longitude);
     }
     onFailureGetGeolocation = () => {
         this.setState({ error: 'Failed to load geo location!' });
